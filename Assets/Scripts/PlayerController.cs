@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     public Transform groundCheck;
     public AudioSource walkAudio;
+    public GameObject soundImg;
     private bool grounded = false, sprinting, jumping, crouching;
     private Vector2 input;
 
@@ -25,6 +26,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        StartCoroutine("Walking");
     }
 
     // Update is called once per frame
@@ -137,6 +139,32 @@ public class PlayerController : MonoBehaviour
         else
         {
             return new Vector3();
+        }
+    }
+
+    IEnumerator Walking()
+    {
+        while (GameManager.isPlaying)
+        {
+            if (walkAudio.mute)
+            {
+                soundImg.SetActive(false);
+                yield return null;
+            }
+            else if (walkAudio.pitch == 1.5f)
+            {
+                soundImg.SetActive(true);
+                yield return new WaitForSeconds(0.125f);
+                soundImg.SetActive(false);
+                yield return new WaitForSeconds(0.125f);
+            }
+            else
+            {
+                soundImg.SetActive(true);
+                yield return new WaitForSeconds(0.25f);
+                soundImg.SetActive(false);
+                yield return new WaitForSeconds(0.25f);
+            }
         }
     }
 }
