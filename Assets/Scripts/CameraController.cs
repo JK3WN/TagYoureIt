@@ -30,6 +30,7 @@ public class CameraController : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
+        transform.localRotation = Quaternion.Euler(0, 0, 0);
     }
 
     // Update is called once per frame

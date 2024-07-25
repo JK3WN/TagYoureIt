@@ -6,16 +6,17 @@ public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 5f;
     public float sprintSpeed = 10f;
+    public float crouchSpeed = 2.5f;
     public float jumpHeight = 5f;
 
     public float maxVelocityChange = 10f;
-    public float airControl = 0.5f;
+    private float airControl = 1f;
 
     public float stamina = 100f;
     public bool isExhausted = false;
 
     private Rigidbody rb;
-    public bool grounded = false, sprinting, jumping;
+    private bool grounded = false, sprinting, jumping, crouching;
     private Vector2 input;
 
     // Start is called before the first frame update
@@ -27,15 +28,27 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        input.Normalize();
-        if (!sprinting) stamina += Time.deltaTime * 11f;
-        if (stamina <= 10) isExhausted = true;
-        if (stamina >= 30) isExhausted = false;
-        if (stamina < 0) stamina = 0;
-        if (stamina > 100) stamina = 100;
-        sprinting = Input.GetButton("Sprint") && !isExhausted;
-        jumping = Input.GetButton("Jump");
+        if (GameManager.isPlaying)
+        {
+            input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+            input.Normalize();
+            if (!sprinting) stamina += Time.deltaTime * 11f;
+            if (stamina <= 10) isExhausted = true;
+            if (stamina >= 30) isExhausted = false;
+            if (stamina < 0) stamina = 0;
+            if (stamina > 100) stamina = 100;
+
+            if (Input.GetButtonDown("Crouch"))
+            {
+                crouching = !crouching;
+            }
+            sprinting = Input.GetButton("Sprint") && !isExhausted;
+            jumping = Input.GetButton("Jump");
+            if(Input.GetButtonDown("Sprint") || Input.GetButtonDown("Jump"))
+            {
+                crouching = false;
+            }
+        }
     }
 
     private void OnTriggerStay(Collider other)
@@ -47,6 +60,15 @@ public class PlayerController : MonoBehaviour
     {
         if (GameManager.isPlaying)
         {
+            if (crouching)
+            {
+                transform.localScale = new Vector3(transform.localScale.x, 0.5f, transform.localScale.z);
+            }
+            else
+            {
+                transform.localScale = new Vector3(transform.localScale.x, 1f, transform.localScale.z);
+            }
+
             if (grounded)
             {
                 if (jumping)
@@ -55,7 +77,7 @@ public class PlayerController : MonoBehaviour
                 }
                 else if (input.magnitude > 0.5f)
                 {
-                    rb.AddForce(CalculateMovement(sprinting ? sprintSpeed : moveSpeed), ForceMode.VelocityChange);
+                    rb.AddForce(CalculateMovement(sprinting ? sprintSpeed : (crouching ? crouchSpeed : moveSpeed)), ForceMode.VelocityChange);
                     if (sprinting) stamina -= Time.deltaTime * 20f;
                 }
                 else
@@ -69,7 +91,7 @@ public class PlayerController : MonoBehaviour
             {
                 if (input.magnitude > 0.5f)
                 {
-                    rb.AddForce(CalculateMovement(sprinting ? sprintSpeed * airControl : moveSpeed * airControl), ForceMode.VelocityChange);
+                    rb.AddForce(CalculateMovement(sprinting ? sprintSpeed * airControl : (crouching ? crouchSpeed * airControl : moveSpeed * airControl)), ForceMode.VelocityChange);
                     if (sprinting) stamina -= Time.deltaTime * 20f;
                 }
                 else
