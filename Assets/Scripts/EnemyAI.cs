@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
-    public Transform player;
+    public GameObject player;
     public float detectionRadius = 10f;
     public float farDistance = 10f;
 
@@ -22,10 +22,10 @@ public class EnemyAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float distanceToPlayer = Vector3.Distance(player.position, transform.position);
-        if (distanceToPlayer < detectionRadius)
+        float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
+        if (!player.GetComponent<AudioSource>().mute && distanceToPlayer < detectionRadius)
         {
-            fleeDirection = transform.position - player.position;
+            fleeDirection = transform.position - player.transform.position;
             fleeDirection.Normalize();
             newDestination = transform.position + fleeDirection * farDistance;
             agent.SetDestination(newDestination);
