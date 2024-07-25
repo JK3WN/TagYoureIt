@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     public bool isExhausted = false;
 
     private Rigidbody rb;
+    public Transform groundCheck;
     private bool grounded = false, sprinting, jumping, crouching;
     private Vector2 input;
 
@@ -48,12 +49,8 @@ public class PlayerController : MonoBehaviour
             {
                 crouching = false;
             }
+            grounded = Physics.CheckSphere(groundCheck.position, 0.1f);
         }
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        grounded = true;
     }
 
     private void FixedUpdate()
