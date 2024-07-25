@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody rb;
     public Transform groundCheck;
+    public AudioSource walkAudio;
     private bool grounded = false, sprinting, jumping, crouching;
     private Vector2 input;
 
@@ -49,7 +50,11 @@ public class PlayerController : MonoBehaviour
             {
                 crouching = false;
             }
-            grounded = Physics.CheckSphere(groundCheck.position, 0.1f);
+            grounded = Physics.CheckSphere(groundCheck.position, 0.1f, 8);
+            if (!grounded)
+            {
+                walkAudio.mute = true;
+            }
         }
     }
 
@@ -60,6 +65,7 @@ public class PlayerController : MonoBehaviour
             if (crouching)
             {
                 transform.localScale = new Vector3(transform.localScale.x, 0.5f, transform.localScale.z);
+                walkAudio.mute = true;
             }
             else
             {
@@ -71,11 +77,22 @@ public class PlayerController : MonoBehaviour
                 if (jumping)
                 {
                     rb.velocity = new Vector3(rb.velocity.x, jumpHeight, rb.velocity.z);
+                    walkAudio.mute = true;
                 }
                 else if (input.magnitude > 0.5f)
                 {
                     rb.AddForce(CalculateMovement(sprinting ? sprintSpeed : (crouching ? crouchSpeed : moveSpeed)), ForceMode.VelocityChange);
-                    if (sprinting) stamina -= Time.deltaTime * 20f;
+                    if (sprinting)
+                    {
+                        stamina -= Time.deltaTime * 20f;
+                        walkAudio.mute = false;
+                        walkAudio.pitch = 1.5f;
+                    }
+                    else if(!crouching)
+                    {
+                        walkAudio.mute = false;
+                        walkAudio.pitch = 0.75f;
+                    }
                 }
                 else
                 {
@@ -99,6 +116,7 @@ public class PlayerController : MonoBehaviour
                 }
             }
             grounded = false;
+            if (input.magnitude == 0) walkAudio.mute = true;
         }
     }
     
