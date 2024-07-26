@@ -31,4 +31,9 @@ public class EnemyAI : MonoBehaviour
             agent.SetDestination(newDestination);
         }
     }
+
+    private void OnDestroy()
+    {
+        GameManager.notCaught--;
+    }
 }

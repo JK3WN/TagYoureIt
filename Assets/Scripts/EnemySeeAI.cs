@@ -13,6 +13,7 @@ public class EnemySeeAI : MonoBehaviour
 
     public GameObject player;
     public GameObject EyesOpen, EyesClosed;
+    public GameObject spotLight;
 
     private NavMeshAgent agent;
     private Vector3 fleeDirection;
@@ -35,6 +36,7 @@ public class EnemySeeAI : MonoBehaviour
         if (IsPlayerInSight())
         {
             player.GetComponent<PlayerController>().stopped = true;
+            player.GetComponent<Rigidbody>().velocity = new Vector3();
         }
         else
         {
@@ -46,12 +48,14 @@ public class EnemySeeAI : MonoBehaviour
     {
         while (GameManager.isPlaying)
         {
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(3f);
             EyesClosed.SetActive(true);
             EyesOpen.SetActive(false);
-            yield return new WaitForSeconds(5f);
+            spotLight.SetActive(false);
+            yield return new WaitForSeconds(3f);
             EyesClosed.SetActive(false);
             EyesOpen.SetActive(true);
+            spotLight.SetActive(true);
         }
     }
 
@@ -78,5 +82,11 @@ public class EnemySeeAI : MonoBehaviour
             }
         }
         return false;
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.notCaught--;
+        if(player) player.GetComponent<PlayerController>().stopped = false;
     }
 }
