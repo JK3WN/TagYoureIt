@@ -26,7 +26,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 100}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 41574
+  controlID: 83077
   draggingID: 0
 --- !u!114 &2
 MonoBehaviour:
@@ -67,7 +67,7 @@ MonoBehaviour:
   m_SerializedViewValues:
   - C:\GameProjects\TagYoureIt\Library\PlayModeViewStates\178a444d04a0d434e9f89f63a619c167
   m_PlayModeViewName: GameView
-  m_ShowGizmos: 1
+  m_ShowGizmos: 0
   m_TargetDisplay: 0
   m_ClearColor: {r: 0, g: 0, b: 0, a: 0}
   m_TargetSize: {x: 1920, y: 1080}
@@ -77,7 +77,7 @@ MonoBehaviour:
   m_EnterPlayModeBehavior: 1
   m_UseMipMap: 0
   m_VSyncEnabled: 0
-  m_Gizmos: 1
+  m_Gizmos: 0
   m_Stats: 0
   m_SelectedSizes: 03000000000000000000000000000000000000000000000000000000000000000000000000000000
   m_ZoomArea:
@@ -152,7 +152,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 100}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 41481
+  controlID: 82982
   draggingID: 0
 --- !u!114 &4
 MonoBehaviour:
@@ -564,9 +564,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 9.595085, y: -7.839344, z: 8.518703}
+    m_Target: {x: 20.776573, y: -11.728661, z: 8.796427}
     speed: 2
-    m_Value: {x: 9.595085, y: -7.839344, z: 8.518703}
+    m_Value: {x: 20.776573, y: -11.728661, z: 8.796427}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -599,7 +599,7 @@ MonoBehaviour:
         m_Value: 1
       m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 0.4}
       m_Pivot: {x: 0, y: 0, z: 0}
-      m_Size: {x: 1, y: 1}
+      m_Size: {x: 0.5, y: 0.5}
     zGrid:
       m_Fade:
         m_Target: 0
@@ -612,9 +612,9 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.30724883, y: 0.20011397, z: -0.06712711, w: 0.928314}
+    m_Target: {x: 0.22650263, y: -0.7741202, z: 0.41656744, w: 0.42033282}
     speed: 2
-    m_Value: {x: 0.30713826, y: 0.20004195, z: -0.067102954, w: 0.9279799}
+    m_Value: {x: 0.22641507, y: -0.77382094, z: 0.41640642, w: 0.42017034}
   m_Size:
     m_Target: 10
     speed: 2
@@ -1762,7 +1762,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: f824fbff1a73fbff9477fbff5878fbff06c3fbff62e3fbff10e5fbff0eebfbffb4ecfbff4af2fbffbcf3fbff4006fcff0810fcff921efcff021ffcffd61ffcffa221fcfff621fcffc822fcff1e38fcff3039fcffee41fcff1643fcfffc44fcffd454fcff2c57fcffde57fcffe458fcff6267fcff4068fcff4c69fcff1a76fcfff077fcff34b5fcff00bafcffb6bcfcfff6f3fcff64f4fcff42fafcff0803fdff4a08fdffd60afdff880cfdff340efdff260ffdff30fbffff0e5a00001a5a0000345a0000385a00007a5a0000a65a0000145b00006a0c01003821010014240100a025010014260100b02c0100542e0100d82e0100923d0100d05201005e530100eca40100f4a4010016a5010050aa010038ab0100d8ab010002b601004eb60100e2be01002ebf010068c50100b4c50100aed00100fad001005aee010098ee0100
+      m_ExpandedIDs: 841dfbff861dfbff1a1efbff7021fbfff824fbff1a73fbff9477fbff5878fbff06c3fbff62e3fbff10e5fbff0eebfbffb4ecfbff4af2fbffbcf3fbff4006fcff0810fcff921efcff021ffcffd61ffcffa221fcfff621fcffc822fcff1e38fcff3039fcffee41fcff1643fcfffc44fcffd454fcff2c57fcffde57fcffe458fcff6267fcff4068fcff4c69fcff1a76fcfff077fcff34b5fcff00bafcffb6bcfcfff6f3fcff64f4fcff42fafcff0803fdff4a08fdffd60afdff880cfdff340efdff260ffdff30fbffff0e5a00001a5a0000345a0000385a00007a5a0000a65a0000145b00006a0c01003821010014240100a025010014260100b02c0100542e0100d82e0100923d0100d05201005e530100eca40100f4a4010016a5010050aa010038ab0100d8ab010002b601004eb60100e2be01002ebf010068c50100b4c50100aed00100fad001005aee010098ee01008e1f0200
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1854,10 +1854,10 @@ MonoBehaviour:
     m_ReferencingInstanceIDs: 
     m_SceneHandles: 
     m_ShowAllHits: 0
-    m_SkipHidden: 0
+    m_SkipHidden: 1
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes
+    - Assets/Materials
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -1865,15 +1865,15 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scenes
+  - Assets/Materials
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\GameProjects\TagYoureIt
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 725b0000
-    m_LastClickedID: 23410
+    m_SelectedIDs: 6e5b0000
+    m_LastClickedID: 23406
     m_ExpandedIDs: 00000000685b000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -1927,9 +1927,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: f0090100
-    m_LastClickedInstanceID: 68080
-    m_HadKeyboardFocusLastEvent: 1
+    m_SelectedInstanceIDs: 8e1f0200
+    m_LastClickedInstanceID: 139150
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: a061000000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -1956,7 +1956,7 @@ MonoBehaviour:
     m_NewAssetIndexInList: -1
     m_ScrollPosition: {x: 0, y: 0}
     m_GridSize: 64
-  m_SkipHiddenPackages: 0
+  m_SkipHiddenPackages: 1
   m_DirectoriesAreaWidth: 122
 --- !u!114 &13
 MonoBehaviour:
@@ -2026,7 +2026,7 @@ MonoBehaviour:
     m_CachedPref: -160
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
-  m_LastInspectedObjectInstanceID: 68080
+  m_LastInspectedObjectInstanceID: 139150
   m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0
