@@ -10,7 +10,6 @@ public class PlayerController : MonoBehaviour
     public float jumpHeight = 5f;
 
     public float maxVelocityChange = 10f;
-    private float airControl = 1f;
 
     public float stamina = 100f;
     public bool isExhausted = false;
@@ -20,6 +19,7 @@ public class PlayerController : MonoBehaviour
     public AudioSource walkAudio;
     public GameObject soundImg;
     private bool grounded = false, sprinting, jumping, crouching;
+    public bool stopped = false;
     private Vector2 input;
 
     // Start is called before the first frame update
@@ -62,7 +62,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (GameManager.isPlaying)
+        if (GameManager.isPlaying && !stopped)
         {
             if (crouching)
             {
@@ -107,7 +107,7 @@ public class PlayerController : MonoBehaviour
             {
                 if (input.magnitude > 0.5f)
                 {
-                    rb.AddForce(CalculateMovement(sprinting ? sprintSpeed * airControl : (crouching ? crouchSpeed * airControl : moveSpeed * airControl)), ForceMode.VelocityChange);
+                    rb.AddForce(CalculateMovement(sprinting ? sprintSpeed : (crouching ? crouchSpeed : moveSpeed)), ForceMode.VelocityChange);
                     if (sprinting) stamina -= Time.deltaTime * 20f;
                 }
                 else
@@ -117,9 +117,9 @@ public class PlayerController : MonoBehaviour
                     rb.velocity = velocity1;
                 }
             }
-            grounded = false;
-            if (input.magnitude == 0) walkAudio.mute = true;
         }
+        grounded = false;
+        if (input.magnitude == 0 || stopped) walkAudio.mute = true;
     }
     
     Vector3 CalculateMovement(float _speed)
