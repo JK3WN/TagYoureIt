@@ -58,6 +58,10 @@ public class PlayerController : MonoBehaviour
             {
                 walkAudio.mute = true;
             }
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                SceneManager.LoadScene(0);
+            }
         }
     }
 
@@ -120,7 +124,7 @@ public class PlayerController : MonoBehaviour
             }
         }
         grounded = false;
-        if (input.magnitude == 0 || stopped) walkAudio.mute = true;
+        if (input.magnitude == 0 || stopped || !GameManager.isPlaying) walkAudio.mute = true;
     }
     
     Vector3 CalculateMovement(float _speed)
