@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
@@ -19,6 +20,8 @@ public class PlayerController : MonoBehaviour
     public Transform groundCheck;
     public AudioSource walkAudio;
     public GameObject soundImg;
+    public Image stamin;
+
     private bool grounded = false, sprinting, jumping, crouching;
     public bool stopped = false;
     private Vector2 input;
@@ -42,6 +45,8 @@ public class PlayerController : MonoBehaviour
             if (stamina >= 30) isExhausted = false;
             if (stamina < 0) stamina = 0;
             if (stamina > 100) stamina = 100;
+
+            stamin.rectTransform.sizeDelta = new Vector2(stamina * 6, 40);
 
             if (Input.GetButtonDown("Crouch"))
             {

@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour
                     else PlayerPrefs.SetFloat("5th", timeElapsed);
                 }
                 min = ((int)PlayerPrefs.GetFloat("1st") / 60).ToString("00");
-                min = (PlayerPrefs.GetFloat("1st") % 60).ToString("00.00");
+                sec = (PlayerPrefs.GetFloat("1st") % 60).ToString("00.00");
                 ScoreText.text = min + ":" + sec;
                 min = ((int)PlayerPrefs.GetFloat("2nd") / 60).ToString("00");
                 sec = (PlayerPrefs.GetFloat("2nd") % 60).ToString("00.00");
