@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     {
         isPlaying = true;
         startTime = Time.time;
+        notCaught = 2;
+        if(player.GetComponent<Rigidbody>() == null) player.AddComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -83,11 +85,21 @@ public class GameManager : MonoBehaviour
     public void RestartPressed()
     {
         isPlaying = true;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        StartCoroutine(LoadAsyncScene());
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void QuitPressed()
     {
         SceneManager.LoadScene(0);
+    }
+
+    public IEnumerator LoadAsyncScene()
+    {
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
     }
 }
