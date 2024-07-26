@@ -85,21 +85,11 @@ public class GameManager : MonoBehaviour
     public void RestartPressed()
     {
         isPlaying = true;
-        StartCoroutine(LoadAsyncScene());
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void QuitPressed()
     {
         SceneManager.LoadScene(0);
-    }
-
-    public IEnumerator LoadAsyncScene()
-    {
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
-        while (!asyncLoad.isDone)
-        {
-            yield return null;
-        }
     }
 }
