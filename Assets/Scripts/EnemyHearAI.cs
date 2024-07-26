@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyAI : MonoBehaviour
+public class EnemyHearAI : MonoBehaviour
 {
     public GameObject player;
     public float detectionRadius = 10f;
@@ -23,7 +23,7 @@ public class EnemyAI : MonoBehaviour
     void Update()
     {
         float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
-        if (distanceToPlayer < detectionRadius)
+        if (!player.GetComponent<AudioSource>().mute && distanceToPlayer < detectionRadius)
         {
             fleeDirection = transform.position - player.transform.position;
             fleeDirection.Normalize();

@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static bool isPlaying = true;
-    public static int notCaught = 2;
+    public static int notCaught = 3;
 
     private float startTime;
 
@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     {
         isPlaying = true;
         startTime = Time.time;
-        notCaught = 2;
+        notCaught = 3;
         if(player.GetComponent<Rigidbody>() == null) player.AddComponent<Rigidbody>();
     }
 
