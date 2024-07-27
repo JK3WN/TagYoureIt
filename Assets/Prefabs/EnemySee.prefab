@@ -488,7 +488,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detectionRadius: 10
-  farDistance: 5
+  farDistance: 10
   sightRange: 30
   fieldOfViewAngle: 60
   player: {fileID: 0}
