@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     public Transform groundCheck;
     public AudioSource walkAudio;
-    public GameObject soundImg;
+    public GameObject soundImg, iceUI;
     public Image stamin;
 
     private bool grounded = false, sprinting, jumping, crouching;
@@ -130,6 +130,8 @@ public class PlayerController : MonoBehaviour
         }
         grounded = false;
         if (input.magnitude == 0 || stopped || !GameManager.isPlaying) walkAudio.mute = true;
+        if(stopped) iceUI.SetActive(true);
+        else iceUI.SetActive(false);
     }
     
     Vector3 CalculateMovement(float _speed)
